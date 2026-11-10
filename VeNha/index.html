@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập về nhà - Tuần 3</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #fff0f5, #ffe4ed, #fff7f8);
+            color: #705044;
+        }
+
+        #root {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+
+        /* ===== CARD CHUNG ===== */
+        .card {
+            background: #fffdfb;
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(160, 100, 100, 0.10);
+            border: 1px solid #fce2e8;
+        }
+
+        /* ===== THÔNG TIN CÁ NHÂN ===== */
+        .profile {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile::before {
+            content: "♡";
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            font-size: 40px;
+            color: #f5c1ce;
+        }
+
+        .profile::after {
+            content: "✿";
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            color: #f3b4c5;
+        }
+
+        .profile img {
+            width: 155px;
+            height: 155px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #f8d5df;
+            padding: 4px;
+            background: #fff0f5;
+            box-shadow: 0 5px 15px rgba(180, 120, 120, 0.15);
+        }
+
+        .profile h1 {
+            margin: 15px 0 10px;
+            font-size: 28px;
+            color: #80543f;
+        }
+
+        .profile p {
+            margin: 9px 0;
+            color: #806354;
+            font-size: 15px;
+        }
+
+        .profile p i {
+            color: #d994a7;
+            width: 20px;
+        }
+
+        /* ===== MẠNG XÃ HỘI ===== */
+        .social {
+            list-style: none;
+            padding: 0;
+            margin: 22px 0 0;
+        }
+
+        .social li {
+            display: inline-block;
+            margin: 0 7px;
+        }
+
+        .social a {
+            display: block;
+            width: 46px;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 50%;
+            background: #e8a6b8;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(180, 120, 120, 0.15);
+        }
+
+        .social a:hover {
+            background: #bd7d8e;
+            transform: translateY(-5px) rotate(8deg);
+        }
+
+        /* ===== TIÊU ĐỀ DANH SÁCH ===== */
+        .card h2 {
+            margin: 0 0 25px;
+            font-size: 23px;
+            color: #80543f;
+        }
+
+        .card h2 i {
+            margin-right: 8px;
+            color: #d994a7;
+        }
+
+        /* ===== DANH SÁCH BÀI TẬP ===== */
+        .exercises {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .exercises li {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .exercises a {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            min-height: 180px;
+            padding: 20px;
+            border-radius: 20px;
+            color: #705044;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 12px rgba(130, 90, 70, 0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Màu pastel xen kẽ */
+        .exercises li:nth-child(1) a {
+            background: #ffe0e9;
+        }
+
+        .exercises li:nth-child(2) a {
+            background: #fff0d5;
+        }
+
+        .exercises li:nth-child(3) a {
+            background: #e9e3ff;
+        }
+
+        .exercises li:nth-child(4) a {
+            background: #dff2e8;
+        }
+
+        .exercises li:nth-child(5) a {
+            background: #ffe8d9;
+        }
+
+        .exercises li:nth-child(6) a {
+            background: #f5e1f2;
+        }
+
+        .exercises a:hover {
+            transform: translateY(-7px) rotate(-1deg);
+            box-shadow: 0 10px 20px rgba(130, 90, 70, 0.13);
+            border-color: white;
+        }
+
+        /* Icon bài tập */
+        .exercises i {
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.65);
+            color: #986b55;
+            font-size: 20px;
+            margin-bottom: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .exercises a:hover i {
+            transform: rotate(10deg) scale(1.08);
+            background: white;
+        }
+
+        .exercises .number {
+            font-size: 17px;
+            color: #704b39;
+            font-weight: 700;
+        }
+
+        .exercises span {
+            display: block;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-top: 8px;
+            color: #806354;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            color: #947365;
+            font-size: 13px;
+            line-height: 1.8;
+            padding: 5px 0 25px;
+        }
+
+        footer i {
+            color: #e69aaf;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 650px) {
+            .exercises {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 420px) {
+            #root {
+                margin: 20px auto;
+            }
+
+            .card {
+                padding: 22px 18px;
+            }
+
+            .profile h1 {
+                font-size: 23px;
+            }
+
+            .card h2 {
+                font-size: 20px;
+            }
+
+            .exercises {
+                grid-template-columns: 1fr;
+            }
+
+            .exercises a {
+                min-height: 145px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="root">
+
+        <!-- THÔNG TIN CÁ NHÂN -->
+        <section class="card profile">
+
+            <img src="image/anhcanhan.jpg" alt="Ảnh cá nhân">
+
+            <h1>Nguyễn Lê Vân Khánh</h1>
+
+            <p>
+                <i class="fas fa-university"></i>
+                Thương mại điện tử - UEH
+            </p>
+
+            <p>
+                <i class="fas fa-id-card"></i>
+                MSSV: 31241024087 &nbsp;|&nbsp; Lớp: EE0001
+            </p>
+
+            <p>
+                <i class="fas fa-map-marker-alt"></i>
+                TP. Hồ Chí Minh
+            </p>
+
+            <!-- CÁC TRANG MẠNG XÃ HỘI -->
+            <ul class="social">
+
+                <li>
+                    <a href="https://github.com/nlvkhanh2403"
+                       title="GitHub" target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://www.facebook.com/nguyen.le.van.khanh.397128/"
+                       title="Facebook" target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="mailto:khanhnguyen.31241024087@st.ueh.edu.vn"
+                       title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <!-- DANH SÁCH BÀI TẬP -->
+        <section class="card">
+
+            <h2>
+                <i class="fas fa-book-open"></i>
+                Các bài tập đã làm
+            </h2>
+
+            <ul class="exercises">
+
+                <li>
+                    <a href="baitap1.html">
+                        <i class="fas fa-font"></i>
+                        <div class="number">Bài 1</div>
+                        <span>Định dạng văn bản: UEH, CNTTKD, text-shadow</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="baitap2.html">
+                        <i class="fas fa-icons"></i>
+                        <div class="number">Bài 2</div>
+                        <span>Menu ngang và Font Awesome</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="baitap3.html">
+                        <i class="fas fa-server"></i>
+                        <div class="number">Bài 3</div>
+                        <span>Landing page Shared Hosting</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="baitap4.html">
+                        <i class="fas fa-th"></i>
+                        <div class="number">Bài 4</div>
+                        <span>My Portfolio (gallery dùng Flexbox)</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="baitap5.html">
+                        <i class="fas fa-columns"></i>
+                        <div class="number">Bài 5</div>
+                        <span>Bố cục Header / Nav / Main / Footer (float)</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="css2/css2.html">
+                        <i class="fas fa-mask"></i>
+                        <div class="number">Bài CSS2</div>
+                        <span>The Bat Family - Danh sách nhân vật, hiệu ứng hover</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            Made with <i class="fas fa-heart"></i> by Nguyễn Lê Vân Khánh
+            <br>
+            © 2026 - Bài tập Phát triển ứng dụng TMĐT
+        </footer>
+
+    </div>
+
+</body>
+</html>
