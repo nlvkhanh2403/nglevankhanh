@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -154,7 +156,8 @@
             flex-wrap: wrap;
         }
 
-        .primary-btn, .secondary-btn {
+        .primary-btn,
+        .secondary-btn {
             display: inline-block;
             padding: 13px 22px;
             border-radius: 30px;
@@ -173,7 +176,8 @@
             border: 1px solid var(--pink);
         }
 
-        .primary-btn:hover, .secondary-btn:hover {
+        .primary-btn:hover,
+        .secondary-btn:hover {
             transform: translateY(-4px);
         }
 
@@ -333,9 +337,17 @@
             margin-bottom: 20px;
         }
 
-        .icon-one { background: var(--yellow); }
-        .icon-two { background: var(--lavender); }
-        .icon-three { background: var(--green); }
+        .icon-one {
+            background: var(--yellow);
+        }
+
+        .icon-two {
+            background: var(--lavender);
+        }
+
+        .icon-three {
+            background: var(--green);
+        }
 
         .lab-number {
             font-size: 11px;
@@ -375,6 +387,13 @@
 
         .lab-link {
             display: block;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            color: var(--brown);
+
+            /* Giữ lại các thuộc tính cũ */
             text-align: center;
             background: var(--pink);
             padding: 11px;
@@ -559,6 +578,39 @@
             .reflection-box {
                 padding: 25px;
             }
+
+        }
+
+        /* EXERCISE DROPDOWN */
+
+        .exercise-row {
+            display: none;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .exercise-row.show {
+            display: grid;
+        }
+
+        .exercise-row a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 5px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--pink-deep);
+            background: #fff7fa;
+            border: 1px solid #f8d8e4;
+            border-radius: 13px;
+            transition: .3s;
+        }
+
+        .exercise-row a:hover {
+            background: var(--pink);
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -577,8 +629,7 @@
                 <li><a href="#reflection">Reflection</a></li>
             </ul>
 
-            <a href="https://github.com/nlvkhanh2403/nglevankhanh" class="github-btn"
-               target="_blank">My GitHub ↗</a>
+            <a href="https://github.com/nlvkhanh2403/nglevankhanh" class="github-btn" target="_blank">My GitHub ↗</a>
         </nav>
     </header>
 
@@ -617,13 +668,10 @@
 
                 <div class="hero-visual">
                     <div class="avatar-frame">
-                        <img src="image/anhcanhan.jpg"
-                             alt="Ảnh đại diện Vân Khánh"
-                             onerror="this.style.display='none';
+                        <img src="image/anhcanhan.jpg" alt="Ảnh đại diện Vân Khánh" onerror="this.style.display='none';
                              this.nextElementSibling.style.display='block';">
 
-                        <div class="avatar-placeholder"
-                             style="display:none;">🎀</div>
+                        <div class="avatar-placeholder" style="display:none;">🎀</div>
                     </div>
 
                     <span class="sticker sticker-one">✿</span>
@@ -666,8 +714,7 @@
                             </li>
                             <li>
                                 <strong>GitHub:</strong>
-                                <a href="https://github.com/nlvkhanh2403/nglevankhanh"
-                                   target="_blank">My GitHub ↗</a>
+                                <a href="YOUR_GITHUB_LINK" target="_blank">My GitHub ↗</a>
                             </li>
                         </ul>
                     </div>
@@ -728,9 +775,15 @@
                             <li>String, Date, Array & Object</li>
                         </ul>
 
-                        <a href="Lab08/exercise.html" class="lab-link">
-                            Explore Lab 08 →
-                        </a>
+                        <button class="lab-link" onclick="toggleExercises('lab08-exercises', this)">
+                            Explore Lab 08 ↓
+                        </button>
+
+                        <div class="exercise-row" id="lab08-exercises">
+                            <a href="Lab08/lab08-walkthrough02.html">Exercise 8.1</a>
+                            <a href="Lab08/exercise-02.html">Exercise 02</a>
+                            <a href="Lab08/exercise-03.html">Exercise 03</a>
+                        </div>
                     </div>
 
                     <!-- LAB 09 -->
@@ -930,4 +983,15 @@
     </footer>
 
 </body>
+<script>
+    function toggleExercises(id, button) {
+        const exerciseRow = document.getElementById(id);
+        const isOpen = exerciseRow.classList.toggle("show");
+
+        button.textContent = isOpen
+            ? button.textContent.replace("↓", "↑")
+            : button.textContent.replace("↑", "↓");
+    }
+</script>
+
 </html>
