@@ -309,10 +309,15 @@
         .lab-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1fr;
+            align-items: stretch;
             gap: 22px;
         }
 
         .lab-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             padding: 27px 23px;
             background: white;
             border-radius: 25px;
@@ -373,6 +378,7 @@
             list-style: none;
             font-size: 12px;
             color: var(--text);
+            min-height: 66px;
             margin-bottom: 22px;
         }
 
@@ -388,6 +394,7 @@
         .lab-link {
             display: block;
             width: 100%;
+            margin-top: auto;
             border: none;
             cursor: pointer;
             font-family: inherit;
@@ -780,9 +787,13 @@
                         </button>
 
                         <div class="exercise-row" id="lab08-exercises">
-                            <a href="Lab08/lab08-walkthrough02.html">Exercise 8.1</a>
-                            <a href="Lab08/exercise-02.html">Exercise 02</a>
-                            <a href="Lab08/exercise-03.html">Exercise 03</a>
+                            <a href="Lab08/lab08-walkthrough02.html">Walkthrough 02</a>
+                            <a href="Lab08/lab08-walkthrough06.html">Walkthrough 06</a>
+                            <a href="Lab08/lab08-walkthrough07.html">Walkthrough 07</a>
+                            <a href="Lab08/lab08-walkthrough08.html">Walkthrough 08</a>
+                            <a href="Lab08/lab08-walkthrough09.html">Walkthrough 09</a>
+                            <a href="Lab08/lab08-walkthrough10.html">Walkthrough 10</a>
+                            <a href="Lab08/lab08-walkthrough11.html">Walkthrough 11</a>
                         </div>
                     </div>
 
@@ -806,9 +817,18 @@
                             <li>Forms & Input Validation</li>
                         </ul>
 
-                        <a href="Lab09/lab09-walkthrough08.html" class="lab-link">
-                            Explore Lab 09 →
-                        </a>
+                        <button class="lab-link" onclick="toggleExercises('lab09-exercises', this)">
+                            Explore Lab 09 ↓
+                        </button>
+                        <div class="exercise-row" id="lab09-exercises">
+                            <a href="Lab09/lab09-walkthrough01.html">Walkthrough 01</a>
+                            <a href="Lab09/lab09-walkthrough02.html">Walkthrough 02</a>
+                            <a href="Lab09/lab09-walkthrough03.html">Walkthrough 03</a>
+                            <a href="Lab09/lab09-walkthrough04.html">Walkthrough 04</a>
+                            <a href="Lab09/lab09-walkthrough05.html">Walkthrough 05</a>
+                            <a href="Lab09/lab09-walkthrough07.html">Walkthrough 07</a>
+                            <a href="Lab09/lab09-walkthrough08.html">Walkthrough 08</a>
+                        </div>
                     </div>
 
                     <!-- LAB 10 -->
@@ -831,9 +851,20 @@
                             <li>AJAX & GET Requests</li>
                         </ul>
 
-                        <a href="./Lab10/index.html" class="lab-link">
-                            Explore Lab 10 →
-                        </a>
+                        <button class="lab-link" onclick="toggleExercises('lab10-exercises', this)">
+                            Explore Lab 10 ↓
+                        </button>
+                        <div class="exercise-row" id="lab10-exercises">
+                            <a href="Lab10/lab10-walkthrough01.html">Walkthrough 01</a>
+                            <a href="Lab10/lab10-walkthrough03.html">Walkthrough 03</a>
+                            <a href="Lab10/lab10-walkthrough04.html">Walkthrough 04</a>
+                            <a href="Lab10/lab10-walkthrough05.html">Walkthrough 05</a>
+                            <a href="Lab10/lab10-walkthrough06.html">Walkthrough 06</a>
+                            <a href="Lab10/lab10-walkthrough07.html">Walkthrough 07</a>
+                            <a href="Lab10/lab10-walkthrough08.html">Walkthrough 08</a>
+                            <a href="Lab10/lab10-walkthrough09.html">Walkthrough 09</a>
+                            <a href="Lab10/lab10-walkthrough10.html">Walkthrough 10</a>
+                        </div>
                     </div>
 
                 </div>
