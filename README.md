@@ -31,22 +31,10 @@ JavaScript-Labs/
 │   └── main.js
 │
 ├── Lab08/
-│   ├── Exercise01/
-│   ├── Exercise02/
-│   ├── ...
-│   └── index.html
 │
 ├── Lab09/
-│   ├── Exercise01/
-│   ├── Exercise02/
-│   ├── ...
-│   └── index.html
 │
 └── Lab10/
-    ├── Exercise01/
-    ├── Exercise02/
-    ├── ...
-    └── index.html
 ```
 
 *Lưu ý: Các thư mục Exercise chứa mã nguồn HTML, JavaScript và những tài nguyên liên quan đến từng bài thực hành.*
