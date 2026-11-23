@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thông tin chi tiết sản phẩm Squishy tại CANDYPOP.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xzoom/1.0.15/xzoom.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Chi tiết sản phẩm | CANDYPOP</title>
+</head>
+<body>
+    <nav class="navbar navbar-default quyt-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#quyt-si-navbar" aria-expanded="false" aria-label="Mở menu">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand quyt-logo" href="ecommerce.html">CANDYPOP</a>
+            </div>
+            <div class="collapse navbar-collapse" id="quyt-si-navbar">
+                <ul class="nav navbar-nav quyt-menu">
+                    <li><a href="ecommerce.html">TRANG CHỦ</a></li>
+                    <li class="dropdown category-dropdown">
+                        <a href="ecommerce.html#products" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DANH MỤC SẢN PHẨM <span class="caret"></span></a>
+                        <ul class="dropdown-menu quyt-dropdown">
+                            <li><a href="ecommerce.html#charm%2Fmockhoa">CHARM - MÓC KHÓA</a></li>
+                            <li><a href="ecommerce.html#tuixinh">TÚI XINH</a></li>
+                            <li><a href="ecommerce.html#buamayman">BÙA MAY MẮN</a></li>
+                            <li><a href="ecommerce.html#setqua">SET QUÀ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="ecommerce-status.html">ĐƠN HÀNG</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container product-detail-page" id="product-detail" aria-live="polite">
+        <nav class="detail-breadcrumb" aria-label="Đường dẫn">
+            <a href="ecommerce.html">Trang chủ</a><span class="glyphicon glyphicon-chevron-right"></span>
+            <a id="detail-category-link" href="ecommerce.html#products">Danh mục</a><span class="glyphicon glyphicon-chevron-right"></span>
+            <span id="detail-breadcrumb-name">Sản phẩm</span>
+        </nav>
+        <div class="row detail-layout">
+            <div class="col-sm-6">
+                <div class="detail-gallery">
+                    <div class="detail-main-image"><img class="xzoom" id="main-product-image" src="" xoriginal="" alt=""></div>
+                    <div class="detail-thumbnails" id="detail-thumbnails" aria-label="Ảnh sản phẩm"></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <section class="detail-information">
+                    <p class="detail-category" id="detail-category"></p>
+                    <h1 class="detail-product-name" id="detail-name"></h1>
+                    <div class="detail-rating"><span id="detail-rating-summary"></span></div>
+                    <div class="detail-price-block">
+                        <del class="detail-price-original" id="detail-original-price" hidden></del>
+                        <p class="detail-price" id="detail-price"></p>
+                    </div>
+                    <hr>
+                    <h2 class="detail-label">Mô tả sản phẩm</h2>
+                    <p class="detail-description" id="detail-description"></p>
+                    <div class="detail-product-meta">
+                        <p><strong>Danh mục:</strong> <span id="detail-meta-category"></span></p>
+                        <p><strong>Mã sản phẩm:</strong> <span id="detail-sku"></span></p>
+                        <p><strong>Thương hiệu:</strong> CANDYPOP</p>
+                    </div>
+                    <div class="detail-stock">
+                        <div class="detail-stock-label"><strong>SỐ LƯỢNG CHỈ CÒN</strong></div>
+                        <div class="progress">
+                            <div id="stock-progress" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="sr-only" id="stock-progress-label"></span></div>
+                            <span class="stock-count-on-bar" id="stock-count"></span>
+                        </div>
+                    </div>
+                    <form id="detail-product-form">
+                        <fieldset class="detail-variants" id="detail-variants" hidden>
+                            <legend>Phân loại</legend>
+                            <div class="detail-variant-options" id="detail-variant-options"></div>
+                        </fieldset>
+                        <label for="detail-quantity">Số lượng</label>
+                        <div class="quantity-control">
+                            <button type="button" id="quantity-minus" aria-label="Giảm số lượng">−</button>
+                            <input type="number" id="detail-quantity" value="1" min="1" max="99" inputmode="numeric">
+                            <button type="button" id="quantity-plus" aria-label="Tăng số lượng">+</button>
+                        </div>
+                        <button type="submit" class="detail-add-cart"><span class="glyphicon glyphicon-shopping-cart"></span> THÊM VÀO GIỎ HÀNG</button>
+                        <a class="detail-back-link" href="ecommerce.html#products">← Tiếp tục xem sản phẩm</a>
+                        <p class="detail-cart-message" id="detail-cart-message" role="status"></p>
+                    </form>
+                    <p class="detail-benefits">Một món quà nhỏ xinh từ CANDYPOP — phù hợp để dành tặng bạn bè và người thân.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <section class="detail-reviews-section" id="reviews">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>CHIA SẺ TỪ KHÁCH HÀNG</p>
+                <h2>Đánh giá</h2>
+            </div>
+            <div class="review-summary-card">
+                <div class="review-average"><strong id="review-average">—</strong><span>/ 5</span></div>
+                <input id="review-summary-rating" type="text" value="0" min="0" max="5" step="0.1" aria-label="Điểm đánh giá trung bình">
+                <p id="review-count">Chưa có đánh giá</p>
+            </div>
+            <p class="review-data-note">Đánh giá lưu trên trình duyệt này; hiện chưa có máy chủ lưu trữ đánh giá dùng chung.</p>
+            <div class="review-content-grid">
+                <form class="write-review-box" id="customer-review-form">
+                    <h3>Viết đánh giá của bạn</h3>
+                    <label for="customer-review-name">Tên của bạn</label>
+                    <input class="form-control" id="customer-review-name" name="name" type="text" maxlength="60" required>
+                    <label for="customer-review-rating">Mức đánh giá</label>
+                    <input id="customer-review-rating" name="rating" type="text" value="5" min="1" max="5" step="1" aria-label="Chọn số sao đánh giá">
+                    <label for="customer-review-comment">Nhận xét</label>
+                    <textarea class="form-control" id="customer-review-comment" name="comment" rows="4" maxlength="1000" required></textarea>
+                    <button class="detail-submit-review" type="submit">GỬI ĐÁNH GIÁ</button>
+                    <p class="review-submit-message" id="review-submit-message" role="status"></p>
+                </form>
+                <div class="customer-review-list" id="customer-review-list" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="related-products-section" id="related-products">
+        <div class="container">
+            <div class="detail-section-heading">
+                <p>CÓ THỂ BẠN SẼ THÍCH</p>
+                <h2>Những sản phẩm liên quan</h2>
+            </div>
+            <div class="row related-products-list" id="related-products-list"></div>
+        </div>
+    </section>
+
+    <footer class="quyt-footer"><div class="container"><div class="footer-bottom">© 2026 CANDYPOP. All rights reserved.</div></div></footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xzoom/1.0.15/xzoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+    <script src="js/quytsi.js"></script>
+    <script src="js/product-catalog.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <title>CANDYPOP</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css">
+
+    <!-- CSS riêng (phải đặt SAU Bootstrap) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <nav class="navbar navbar-default quyt-header">
+        <div class="container">
+
+            <!-- Logo và nút menu mobile -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#quyt-si-navbar" aria-expanded="false">
+                    <span class="sr-only">Mở menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand quyt-logo" href="ecommerce.html">
+                    CANDYPOP
+                </a>
+            </div>
+
+            <!-- Menu điều hướng -->
+            <div class="collapse navbar-collapse" id="quyt-si-navbar">
+
+                <!-- Menu bên trái -->
+                <ul class="nav navbar-nav quyt-menu">
+
+                    <li class="active">
+                        <a href="ecommerce.html">TRANG CHỦ</a>
+                    </li>
+
+                    <!-- Dropdown danh mục -->
+                    <li class="dropdown category-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">
+                            DANH MỤC SẢN PHẨM
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu quyt-dropdown">
+                            <li><a href="#charm%2Fmockhoa">CHARM - MÓC KHÓA</a></li>
+                            <li><a href="#tuixinh">TÚI XINH</a></li>
+                            <li><a href="#buamayman">BÙA MAY MẮN</a></li>
+                            <li><a href="#setqua">SET QUÀ</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="ecommerce-status.html">ĐƠN HÀNG</a>
+                    </li>
+
+                </ul>
+
+                <!-- Các icon bên phải -->
+                <ul class="nav navbar-nav navbar-right quyt-actions">
+
+                    <!-- Tìm kiếm -->
+                    <li class="search-wrapper">
+                        <a href="#" id="search-toggle" aria-label="Tìm kiếm" aria-expanded="false">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+
+                        <div class="search-box" id="search-box">
+                            <form id="search-form">
+                                <input type="text" id="search-input" placeholder="Tìm squishy bạn thích..."
+                                    autocomplete="off">
+                                <button type="submit" aria-label="Tìm kiếm">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+
+                    <!-- Giỏ hàng -->
+                    <li>
+                        <a href="cart.html" aria-label="Giỏ hàng">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+
+                    <!-- Tài khoản -->
+                    <li>
+                        <a href="account.html" aria-label="Tài khoản">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ================= BANNER SLIDER ================= -->
+    <section class="quyt-banner">
+
+        <div id="quyt-carousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+
+            <!-- Dấu chỉ slide -->
+            <ol class="carousel-indicators">
+                <li data-target="#quyt-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#quyt-carousel" data-slide-to="1"></li>
+                <li data-target="#quyt-carousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Nội dung slider -->
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active">
+                    <img src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/894306232_1507793354733327_1354601912450781040_n.png?stp=dst-png&cstp=mx2256x990&ctp=s2256x990&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEmt1xnpxc6Uh7HXiH-p4RfGwSywtlAB6IbBLLC2UAHojFNvnV2mnH5PZQBxZFZAtv6oIRtGjonhQxu7cEpz_Bt&_nc_ohc=r3dMnvytQgMQ7kNvwGfFcXW&_nc_oc=Ado8r8jVqmAM7zUNYWgdSHZ5N-9hGyfNFbzUO4Qs6An5BBH5E8KQE751zmgmwTF0htw&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=UZ4C8AgB8qaYwrXSLzhUrw&_nc_ss=7b2a8&oh=00_AQQTKPqnv6dZBvcMi6Isbs13T8LGqzMJ01i3GHIsZHkiKA&oe=6B0A0BA8" alt="Chào mừng đến với CANDYPOP">
+                </div>
+
+                <div class="item">
+                    <img src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t39.30808-6/724019580_1379411960904801_5967953844149388974_n.png?stp=dst-jpg_tt6&cstp=mx2658x984&ctp=s2658x984&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=86c6b0&_nc_eui2=AeGjzRehV1JzwM5CNdVAs_nWDQ1NvOc2rokNDU285zauiQNMR0_BrC7CSFkjrZGMa9k5lULuFwMoWIJ_aSxyGml9&_nc_ohc=WDR4g1Mx38QQ7kNvwEsnEEM&_nc_oc=Adqr0BL7vYgg43UzStjXAVXHRpbJoG7xVRy9p9O1h9PQq7_7QpeRa3SDuzOCpCK5lKQ&_nc_zt=23&_nc_ht=scontent.fsgn5-3.fna&_nc_gid=H2YBxtZPq-7yXCnw360waQ&_nc_ss=7b2a8&oh=00_AQTksAoZrHQfpjDrOP_2hGLsTYaymoWEYh1W7E8qENkYVw&oe=6B0A1289" alt="Bộ sưu tập Squishy">
+                </div>
+
+            </div>
+
+            <!-- Nút chuyển slide -->
+            <a class="left carousel-control" href="#quyt-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Slide trước</span>
+            </a>
+
+            <a class="right carousel-control" href="#quyt-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Slide tiếp theo</span>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="container quyt-content">
+
+        <div class="row">
+
+            <!-- DANH MỤC BÊN TRÁI -->
+            <aside class="col-sm-4 col-md-3">
+
+                <div class="category-sidebar">
+
+                    <h3 class="section-heading">
+                        <span>●</span> DANH MỤC
+                    </h3>
+
+                    <ul class="category-list">
+                        <li><a href="#charm%2Fmockhoa">CHARM - MÓC KHÓA</a></li>
+                        <li><a href="#tuixinh">TÚI XINH</a></li>
+                        <li><a href="#buamayman">BÙA MAY MẮN</a></li>
+                        <li><a href="#setqua">SET QUÀ</a></li>
+                    </ul>
+
+                    <div class="sidebar-note">
+                        <p>Trang trí túi xinh với những món đồ đáng yêu từ CANDYPOP!</p>
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- KHU VỰC SẢN PHẨM -->
+            <section class="col-sm-8 col-md-9" id="products">
+
+                <div class="product-heading">
+                    <div>
+                        <p class="small-heading">NHỮNG MÓN ĐỒ ĐÁNG YÊU</p>
+                        <h2 id="product-list-title">Sản phẩm nổi bật</h2>
+                    </div>
+                </div>
+
+                <div class="row product-list" id="product-grid">
+
+                    <!-- MOE ĐI TÂY -->
+                    <div class="col-sm-6 col-md-4 product-item" id="charm/mockhoa">
+                        <div class="product-card" data-stock="14" data-stock-capacity="30">
+                            <div class="product-image">
+                                <span class="product-badge product-discount">-14%</span>
+                                <img src="https://scontent.fsgn5-22.fna.fbcdn.net/v/t39.30808-6/885716181_1504291945083468_3956020906561658885_n.jpg?stp=dst-jpg_tt6&cstp=mx900x900&ctp=s900x900&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHvNAhCyq7kKji7gvkDPuLipGghy-M1L9KkaCHL4zUv0uMM-UhVsdupTmUj3KxrP_gz258x91WRHUsW2tx4xTw_&_nc_ohc=XeyDmZTVv4UQ7kNvwFcX3W9&_nc_oc=Adp8fWa2u8TcNdhzanvy7_TIVIzk3g1dasihUsn0udo_9EHEYCjqtA8es7XyUtqX4Uc&_nc_zt=23&_nc_ht=scontent.fsgn5-22.fna&_nc_gid=wSwNwnKjmydVITj-3PHUmA&_nc_ss=7b2a8&oh=00_AQTCOBzxT9zG_MZlAKWu2iYs8_kljZesW65dp-4kT69OzQ&oe=6B0A0A94" alt="Moe Đi Tây">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">CHARM - MÓC KHÓA</p>
+                                <h4><a href="ecommerce-detail.html?product=moe-di-tay">Moe Đi Tây</a></h4>
+                                <div class="product-rating">
+                                    <input type="text" class="rating" value="0" data-size="xs" data-display-only="true" data-show-clear="false" data-show-caption="false" aria-label="Đánh giá">
+                                    <small>Chưa có đánh giá</small>
+                                </div>
+                                <div class="product-stock">
+                                    <strong>SỐ LƯỢNG CHỈ CÒN</strong>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                                        <span class="stock-count-on-bar"></span>
+                                    </div>
+                                </div>
+                                <div class="product-bottom">
+                                    <div class="product-prices">
+                                        <del class="product-price-original">175.000đ</del>
+                                        <span class="product-price">120.000đ</span>
+                                    </div>
+                                    <a href="ecommerce-detail.html?product=moe-di-tay" class="product-detail">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MOE-RY X-MAS-->
+                    <div class="col-sm-6 col-md-4 product-item" id="charm/mockhoa">
+                        <div class="product-card" data-stock="8" data-stock-capacity="25">
+                            <div class="product-image">
+                                <span class="product-badge product-status product-new">NEW</span>
+                                <img src="https://scontent.fsgn5-18.fna.fbcdn.net/v/t39.30808-6/913891800_1519153916930604_5324813988745607856_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEFqFKvoGwVM7hEYKC0y1wLAudllZ-K2NAC52WVn4rY0LPQsjrNWlsfiCGYuriFAImhm-m7ume6UXyYW8s0-5VW&_nc_ohc=Z0zkqgdN1V0Q7kNvwHKUl7Q&_nc_oc=Adq8LXRFcn4n6cFc9PgTSiQdiNJHgUKUq3QtxMViQAFfSkWO20e7M_BImEGZOJLfc7E&_nc_zt=23&_nc_ht=scontent.fsgn5-18.fna&_nc_gid=Iutq9jo050ouQu89c3uJXQ&_nc_ss=7b2a8&oh=00_AQTvcSIVWW-OB53ZpzRqQ8QEHHuFQEfVDPpTR1-OECTGGg&oe=6B0A12D5" alt="Trái Dừa">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">CHARM - MÓC KHÓA</p>
+                                <h4><a href="ecommerce-detail.html?product=moery-xmas">Moe-ry X-Mas</a></h4>
+                                <div class="product-rating">
+                                    <input type="text" class="rating" value="0" data-size="xs" data-display-only="true" data-show-clear="false" data-show-caption="false" aria-label="Đánh giá">
+                                    <small>Chưa có đánh giá</small>
+                                </div>
+                                </p>
+                                <div class="product-stock">
+                                    <strong>SỐ LƯỢNG CHỈ CÒN</strong>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                                        <span class="stock-count-on-bar"></span>
+                                    </div>
+                                </div>
+                                <div class="product-bottom">
+                                    <span class="product-price">45.000đ</span>
+                                    <a href="ecommerce-detail.html?product=moery-xmas" class="product-detail">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TÚI HOA-->
+                    <div class="col-sm-6 col-md-4 product-item" id="tuixinh">
+                        <div class="product-card" data-stock="5" data-stock-capacity="20">
+                            <div class="product-image">
+                                <span class="product-badge product-status product-best-seller">BEST SELLER</span>
+                                <img src="https://scontent.fsgn5-7.fna.fbcdn.net/v/t39.30808-6/484034436_1022031719976162_5096265225427195126_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x2048&ctp=s2048x2048&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFErZOAO-XRxnWDX742dxgDktYj8bXJvmaS1iPxtcm-ZsCYP7DNoTi1hM9vVQPsBMBDDTvcS_R8-b39eukbXIu6&_nc_ohc=sK2tBmFeZbsQ7kNvwF6gskg&_nc_oc=Ado8JDgfV35khVD7W6gSlPKvotVyxgggA66D1vrXbjulIabzLYzCeT5M3EnqaNOsWMQ&_nc_zt=23&_nc_ht=scontent.fsgn5-7.fna&_nc_gid=xsjFFawlOpPnfH9tsRLdtQ&_nc_ss=7b2a8&oh=00_AQQTZpXllHK4X_kIIOQmWHTu7QBglLBngO3BwOJn6Dcssw&oe=6B09FCA4" alt="Túi Xinh">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">TÚI XINH</p>
+                                <h4><a href="ecommerce-detail.html?product=tuihoa">Túi hoa</a></h4>
+                                <div class="product-rating">
+                                    <input type="text" class="rating" value="0" data-size="xs" data-display-only="true" data-show-clear="false" data-show-caption="false" aria-label="Đánh giá">
+                                    <small>Chưa có đánh giá</small>
+                                </div>
+                                <div class="product-stock">
+                                    <strong>SỐ LƯỢNG CHỈ CÒN</strong>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                                        <span class="stock-count-on-bar"></span>
+                                    </div>
+                                </div>
+                                <div class="product-bottom">
+                                    <span class="product-price">50.000đ</span>
+                                    <a href="ecommerce-detail.html?product=tuihoa" class="product-detail">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SET QUÀ ANH HÙNG -->
+                    <div class="col-sm-6 col-md-4 product-item" id="setqua">
+                        <div class="product-card" data-stock="6" data-stock-capacity="20">
+                            <div class="product-image">
+                                <span class="product-badge product-discount">-13%</span>
+                                <span class="product-badge product-status product-best-seller">BEST SELLER</span>
+                                <img src="https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/849907989_1485370990308897_8164191647361521788_n.jpg?stp=dst-jpg_tt6&cstp=mx900x900&ctp=s900x900&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeG0X9IGPEaUZYJc3_FOmuQVZHYzDcdBEZNkdjMNx0ERkwuwbzLfIjoxJLYoBrHtkhbFjewmtOk_EuRZhBzRJxkZ&_nc_ohc=fRpbpWN-6dQQ7kNvwGpihLV&_nc_oc=AdpdftDLLUp7ctFwdKXYT0issemm2U_qYIeThOQbBF-ytEjxETPTy47bUszRwhXVk6M&_nc_zt=23&_nc_ht=scontent.fsgn5-12.fna&_nc_gid=iqcorsQ7qSGC0KBz_RI2gA&_nc_ss=7b2a8&oh=00_AQTZAQcK9YZ391svWJmdvfcofitmTzEcwTDKX3Aqp5_NJw&oe=6B0A0F4D" alt="Set Quà Anh Hùng">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">SET QUÀ</p>
+                                <h4><a href="ecommerce-detail.html?product=set-qua-anh-hung">Set Quà Anh Hùng</a></h4>
+                                <div class="product-rating">
+                                    <input type="text" class="rating" value="0" data-size="xs" data-display-only="true" data-show-clear="false" data-show-caption="false" aria-label="Đánh giá Phô Mai Vaseline">
+                                    <small>Chưa có đánh giá</small>
+                                </div>
+                                <div class="product-stock">
+                                    <strong>SỐ LƯỢNG CHỈ CÒN</strong>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                                        <span class="stock-count-on-bar"></span>
+                                    </div>
+                                </div>
+                                <div class="product-bottom">
+                                    <div class="product-prices">
+                                        <del class="product-price-original">80.000đ</del>
+                                        <span class="product-price">70.000đ</span>
+                                    </div>
+                                    <a href="ecommerce-detail.html?product=set-qua-anh-hung" class="product-detail">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MÃ MÂY -->
+                    <div class="col-sm-6 col-md-4 product-item">
+                        <div class="product-card" data-stock="12" data-stock-capacity="30">
+                            <div class="product-image">
+                                <span class="product-badge product-discount">-13%</span>
+                                <img src="https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-6/615186359_1256795123166486_6053888078349911042_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGYMLejT-CCup7zgd-yPTeX3KK-6PmgnPLcor7o-aCc8v1C9CHCEmMrtiI4KLhNChXNTFdNONd535N23SyGzDqH&_nc_ohc=5TGQ0K6OkZwQ7kNvwGhmYQw&_nc_oc=AdpiqaAyXwlQ09luPv-D6Lm9EA2xobKjUVuzXf0p2ZrooW4xY6RzO7UD-tcBB10HVDY&_nc_zt=23&_nc_ht=scontent.fsgn5-11.fna&_nc_gid=zh72CXBoL0bFj-N1qFIvng&_nc_ss=7b2a8&oh=00_AQSjvor2A3NRqwvIEEpNHqMBOfvJ6Ye5ligrW2ochLKvwA&oe=6B0A0511" alt="Khoai Tây">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">CHARM - MÓC KHÓA</p>
+                                <h4><a href="ecommerce-detail.html?product=ma-may">Mã mây</a></h4>
+                                <div class="product-rating">
+                                    <input type="text" class="rating" value="0" data-size="xs" data-display-only="true" data-show-clear="false" data-show-caption="false" aria-label="Đánh giá Khoai Tây">
+                                    <small>Chưa có đánh giá</small>
+                                </div>
+                                <div class="product-stock">
+                                    <strong>SỐ LƯỢNG CHỈ CÒN</strong>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                                        <span class="stock-count-on-bar"></span>
+                                    </div>
+                                </div>
+                                <div class="product-bottom">
+                                    <div class="product-prices">
+                                        <del class="product-price-original">75.000đ</del>
+                                        <span class="product-price">65.000đ</span>
+                                    </div>
+                                    <a href="ecommerce-detail.html?product=ma-may" class="product-detail">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BÙA MAY MẮN -->
+                    <div class="col-sm-6 col-md-4 product-item" id="squishy-foam">
+                        <div class="product-card" data-stock="9" data-stock-capacity="20">
+                            <div class="product-image">
+                                <span class="product-badge product-status product-new">NEW</span>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdVLD7B-tWujB6kzl9AOJOZKqLqMJUmfZ8j1ilRF-DWNlrOyVypbLoxlWT&s=10" alt="Phô Mai Foam">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">BÙA MAY MẮN</p>
+                                <h4><a href="ecommerce-detail.html?product=bua-dam-them">Bùa dặm thêm</a></h4>
+                                <div class="product-rating">
+                                    <input type="text" class="rating" value="0" data-size="xs" data-display-only="true" data-show-clear="false" data-show-caption="false" aria-label="Đánh giá Phô Mai Foam">
+                                    <small>Chưa có đánh giá</small>
+                                </div>
+                                <div class="product-stock">
+                                    <strong>SỐ LƯỢNG CHỈ CÒN</strong>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                                        <span class="stock-count-on-bar"></span>
+                                    </div>
+                                </div>
+                                <div class="product-bottom">
+                                    <span class="product-price">75.000đ</span>
+                                    <a href="ecommerce-detail.html?product=bua-dam-them" class="product-detail">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SET QUÀ BẠN NỮ -->
+                    <div class="col-sm-6 col-md-4 product-item" id="setqua">
+                        <div class="product-card" data-stock="3" data-stock-capacity="20">
+                            <div class="product-image">
+                                <span class="product-badge product-status product-best-seller">BEST SELLER</span>
+                                <img src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/857799951_1491661153013214_2739141937643952601_n.jpg?stp=dst-jpg_tt6&cstp=mx900x900&ctp=s900x900&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFUYMIoYevMszq3FUzknVUCcKvr5usgRVRwq-vm6yBFVHmA5o77wjluTtDfDwQtvIcW7_nyioL_tfp3uUTSxPrd&_nc_ohc=YLuVMIYo5XAQ7kNvwHGOVgl&_nc_oc=Adr4PMrp5TU-PPZHWx2NRkQKrwAzS0oUaUGUBzQXuwhX0hOSr-TUE2AHf7r_zvZFHBo&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=2d3bRiDh0OBHCjoKY5UzNQ&_nc_ss=7b2a8&oh=00_AQTLVplkfc3Dwbi8n1zg7rgb2voC1vdQeA32aItyWJ5oow&oe=6B0A1B37" alt="Set qua tang ban gai">
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">SET QUÀ</p>
+                                <h4><a href="ecommerce-detail.html?product=set-qua-anh-hung-bua-may-man">Set quà anh hùng - bùa may mắn</a></h4>
+                                <div class="product-rating">
+                                    <input type="text" class="rating" value="0" data-size="xs" data-display-only="true" data-show-clear="false" data-show-caption="false" aria-label="Đánh giá Taba">
+                                    <small>Chưa có đánh giá</small>
+                                </div>
+                                <p class="product-description">
+                                    Squishy Taba mềm dẻo, mang lại cảm giác thư giãn khi sử dụng.
+                                </p>
+                                <div class="product-stock">
+                                    <strong>SỐ LƯỢNG CHỈ CÒN</strong>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                                        <span class="stock-count-on-bar"></span>
+                                    </div>
+                                </div>
+                                <div class="product-bottom">
+                                    <span class="product-price">80.000đ</span>
+                                    <a href="ecommerce-detail.html?product=set-qua-anh-hung-bua-may-man" class="product-detail">Xem chi tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="search-empty" id="search-empty">
+                    Không tìm thấy sản phẩm phù hợp.
+                </p>
+
+            </section>
+
+        </div>
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="quyt-footer">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <h3>CANDYPOP</h3>
+                    <p>the world of squishies</p>
+                </div>
+
+                <div class="col-sm-3">
+                    <h4>KHÁM PHÁ</h4>
+                    <p><a href="ecommerce.html">Trang chủ</a></p>
+                    <p><a href="#products">Sản phẩm</a></p>
+                    <p><a href="ecommerce-status.html">Đơn hàng</a></p>
+                </div>
+
+                <div class="col-sm-3">
+                    <h4>CANDYPOP</h4>
+                    <p>Thank you for choosing us!</p>
+                    <p>Made with love ♡</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 CANDYPOP. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+
+    <!-- JavaScript riêng -->
+    <script src="js/product-catalog.js"></script>
+    <script src="js/product-sync.js"></script>
+    <script src="js/quytsi.js"></script>
+
+</body>
+
+</html>

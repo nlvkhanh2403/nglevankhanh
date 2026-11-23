@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Game Flappy Bird bằng HTML, CSS và Jquery</title>
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="container">
+        <div id="bird"></div>
+
+        <div id="pole_1" class="pole"></div>
+        <div id="pole_2" class="pole"></div>
+
+        <button id="play_btn">Click vào để chơi</button>
+
+        <span id="level">Level: 1</span>
+        <span id="score">0</span>
+
+        <!-- Màn hình kết quả -->
+        <div id="result_screen">
+            <div class="result_box">
+                <h2 id="result_title">GAME OVER!</h2>
+
+                <p>Điểm số của bạn</p>
+                <h1 id="final_score">0</h1>
+
+                <p>Level đạt được</p>
+                <h3 id="final_level">Level 1</h3>
+
+                <button id="result_restart_btn">Chơi lại</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

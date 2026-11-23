@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <title>CANDYPOP | Trạng thái đơn hàng</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <nav class="navbar navbar-default quyt-header">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#quyt-si-navbar">
+                    <span class="sr-only">Mở menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand quyt-logo" href="ecommerce.html">
+                    CANDYPOP
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="quyt-si-navbar">
+
+                <ul class="nav navbar-nav quyt-menu">
+                    <li>
+                        <a href="ecommerce.html">TRANG CHỦ</a>
+                    </li>
+
+                    <li class="dropdown category-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            DANH MỤC SẢN PHẨM
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu quyt-dropdown">
+                            <li><a href="ecommerce.html#charm%2Fmockhoa">CHARM - MÓC KHÓA</a></li>
+                            <li><a href="ecommerce.html#tuixinh">TÚI XINH</a></li>
+                            <li><a href="ecommerce.html#buamayman">BÙA MAY MẮN</a></li>
+                            <li><a href="ecommerce.html#setqua">SET QUÀ</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="active">
+                        <a href="ecommerce-status.html">ĐƠN HÀNG</a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right quyt-actions">
+                    <li class="search-wrapper">
+                        <a href="#" id="search-toggle" aria-label="Tìm kiếm">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+
+                        <div class="search-box" id="search-box">
+                            <form id="search-form">
+                                <input type="text" id="search-input" placeholder="Tìm squishy bạn thích...">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="cart.html">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="account.html">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container order-page">
+
+        <div class="order-heading">
+            <p class="small-heading">CẢM ƠN BẠN ĐÃ LỰA CHỌN CANDYPOP</p>
+            <h2>Trạng thái đơn hàng</h2>
+            <p>Theo dõi tình trạng những món squishy đáng yêu của bạn nhé!</p>
+        </div>
+
+        <!-- BỘ LỌC TRẠNG THÁI -->
+        <div class="order-filter">
+            <button class="order-filter-btn active" type="button" data-status="all" aria-pressed="true">Tất cả</button>
+            <button class="order-filter-btn" type="button" data-status="pending" aria-pressed="false">Chờ xác nhận</button>
+            <button class="order-filter-btn" type="button" data-status="shipping" aria-pressed="false">Đang giao</button>
+            <button class="order-filter-btn" type="button" data-status="completed" aria-pressed="false">Hoàn thành</button>
+            <button class="order-filter-btn" type="button" data-status="cancelled" aria-pressed="false">Đã hủy</button>
+        </div>
+
+        <!-- DANH SÁCH ĐƠN HÀNG -->
+        <div class="order-list">
+            <p class="order-filter-empty" id="order-filter-empty" hidden>Không có đơn hàng ở trạng thái này.</p>
+
+            <!-- ĐƠN HÀNG 1 -->
+            <div class="order-card" data-status="completed">
+
+                <div class="order-card-header">
+                    <span class="order-code">Mã đơn: QS001</span>
+                    <span class="order-date">Ngày đặt: 20/11/2026</span>
+                </div>
+
+                <div class="thumbnail order-thumbnail">
+                    <div class="row order-row">
+
+                        <div class="col-xs-3 col-sm-2">
+                            <img class="img-responsive order-image" src="image/phomai-1.jpg" alt="Phô Mai Vaseline">
+                        </div>
+
+                        <div class="col-xs-9 col-sm-4">
+                            <a href="ecommerce-detail.html?product=moe-di-tay" class="order-product-name">
+                                Moe Đi Tây
+                            </a>
+                            <p class="order-product-category">Charm - Móc khóa</p>
+                        </div>
+
+                        <div class="col-xs-4 col-sm-1 order-quantity">
+                            <span class="mobile-label">Số lượng:</span> 1
+                        </div>
+
+                        <div class="col-xs-4 col-sm-2 order-price">
+                            <span class="mobile-label">Thành tiền:</span> 120.000đ
+                        </div>
+
+                        <div class="col-xs-4 col-sm-2">
+                            <span class="order-status completed">Hoàn thành</span>
+                        </div>
+
+                        <div class="col-sm-1 order-message">
+                            <a href="#" class="message-link">1 tin nhắn</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="order-card-footer">
+                    <span>Tổng thanh toán: <strong>120.000đ</strong></span>
+                    <button class="btn-order-detail" type="button">Xem chi tiết</button>
+                </div>
+            </div>
+
+
+            <!-- ĐƠN HÀNG 2 -->
+            <div class="order-card" data-status="shipping">
+
+                <div class="order-card-header">
+                    <span class="order-code">Mã đơn: QS002</span>
+                    <span class="order-date">Ngày đặt: 21/11/2026</span>
+                </div>
+
+                <div class="thumbnail order-thumbnail">
+                    <div class="row order-row">
+
+                        <div class="col-xs-3 col-sm-2">
+                            <img class="img-responsive order-image" src="image/xoairop-2.jpg" alt="Xoài Rộp">
+                        </div>
+
+                        <div class="col-xs-9 col-sm-4">
+                            <a href="ecommerce-detail.html?product=set-qua-anh-hung-bua-may-man" class="order-product-name">
+                                Set quà anh hùng - bùa may mắn
+                            </a>
+                            <p class="order-product-category">Set quà</p>
+                        </div>
+
+                        <div class="col-xs-4 col-sm-1 order-quantity">
+                            <span class="mobile-label">Số lượng:</span> 2
+                        </div>
+
+                        <div class="col-xs-4 col-sm-2 order-price">
+                            <span class="mobile-label">Thành tiền:</span> 160.000đ
+                        </div>
+
+                        <div class="col-xs-4 col-sm-2">
+                            <span class="order-status shipping">Đang giao</span>
+                        </div>
+
+                        <div class="col-sm-1 order-message">
+                            <a href="#" class="message-link">2 tin nhắn</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="order-card-footer">
+                    <span>Tổng thanh toán: <strong>160.000đ</strong></span>
+                    <button class="btn-order-detail" type="button">Xem chi tiết</button>
+                </div>
+            </div>
+
+
+            <!-- ĐƠN HÀNG 3 -->
+            <div class="order-card" data-status="pending">
+
+                <div class="order-card-header">
+                    <span class="order-code">Mã đơn: QS003</span>
+                    <span class="order-date">Ngày đặt: 22/11/2026</span>
+                </div>
+
+                <div class="thumbnail order-thumbnail">
+                    <div class="row order-row">
+
+                        <div class="col-xs-3 col-sm-2">
+                            <img class="img-responsive order-image" src="image/meo-1.jpg" alt="Bánh Mì Mèo">
+                        </div>
+
+                        <div class="col-xs-9 col-sm-4">
+                            <a href="ecommerce-detail.html?product=moery-xmas" class="order-product-name">
+                                Moe-ry X-Mas
+                            </a>
+                            <p class="order-product-category">Charm - Móc khóa</p>
+                        </div>
+
+                        <div class="col-xs-4 col-sm-1 order-quantity">
+                            <span class="mobile-label">Số lượng:</span> 1
+                        </div>
+
+                        <div class="col-xs-4 col-sm-2 order-price">
+                            <span class="mobile-label">Thành tiền:</span> 45.000đ
+                        </div>
+
+                        <div class="col-xs-4 col-sm-2">
+                            <span class="order-status pending">Chờ xác nhận</span>
+                        </div>
+
+                        <div class="col-sm-1 order-message">
+                            <a href="#" class="message-link">0 tin nhắn</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="order-card-footer">
+                    <span>Tổng thanh toán: <strong>45.000đ</strong></span>
+                    <button class="btn-order-detail" type="button">Xem chi tiết</button>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="order-empty" id="order-empty">
+            Không có đơn hàng nào trong trạng thái này.
+        </p>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="quyt-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <h3>CANDYPOP</h3>
+                    <p>the world of squishies</p>
+                </div>
+
+                <div class="col-sm-3">
+                    <h4>KHÁM PHÁ</h4>
+                    <p><a href="ecommerce.html">Trang chủ</a></p>
+                    <p><a href="ecommerce.html#products">Sản phẩm</a></p>
+                    <p><a href="ecommerce-status.html">Đơn hàng</a></p>
+                </div>
+
+                <div class="col-sm-3">
+                    <h4>CANDYPOP</h4>
+                    <p>Thank you for choosing us!</p>
+                    <p>Made with love ♡</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 CANDYPOP. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/order.js"></script>
+    <script src="js/product-catalog.js"></script>
+    <script src="js/product-sync.js"></script>
+
+</body>
+
+</html>
