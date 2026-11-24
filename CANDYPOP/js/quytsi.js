@@ -83,22 +83,26 @@ $(document).ready(function () {
 
     });
 
-    // Hiển thị tồn kho mẫu trên từng thẻ sản phẩm.
+    // Hiển thị số đã bán và trạng thái tồn kho bằng Bootstrap progress bar.
     $(".product-card[data-stock]").each(function () {
         var card = this;
         var stock = Number(card.dataset.stock);
         var capacity = Number(card.dataset.stockCapacity);
-        var percent = capacity > 0 ? Math.round((stock / capacity) * 100) : 0;
-        var bar = card.querySelector(".progress-bar");
+        var sold = Math.max(0, capacity - stock);
+        var percentSold = capacity > 0 ? Math.round((sold / capacity) * 100) : 0;
+        var bar = card.querySelector(".product-stock .progress-bar");
+        var progress = card.querySelector(".product-stock .progress");
         var count = card.querySelector(".stock-count-on-bar");
 
-        bar.style.width = percent + "%";
-        bar.setAttribute("aria-valuenow", String(percent));
-        bar.setAttribute("aria-valuetext", stock + " sản phẩm còn lại");
+        if (!bar || !progress || !count) return;
+        bar.style.width = percentSold + "%";
+        bar.setAttribute("aria-valuenow", String(percentSold));
+        bar.setAttribute("aria-valuetext", "Đã bán " + sold + "; còn " + stock + " sản phẩm");
         bar.classList.remove("progress-bar-success", "progress-bar-warning", "progress-bar-danger");
-        bar.classList.add(stock === 0 ? "progress-bar-danger" : percent <= 20 ? "progress-bar-danger" : percent <= 40 ? "progress-bar-warning" : "progress-bar-success");
-        count.textContent = stock > 0 ? stock + " sản phẩm" : "Hết hàng";
-        count.setAttribute("aria-hidden", "true");
+        progress.classList.toggle("is-low-stock", stock > 0 && stock < 10);
+        progress.classList.toggle("is-out-of-stock", stock <= 0);
+        bar.classList.add(stock <= 0 ? "progress-bar-danger" : stock < 10 ? "progress-bar-warning" : "progress-bar-success");
+        count.textContent = stock <= 0 ? "Hết hàng" : stock < 10 ? "Sắp bán hết" : "Đã bán " + sold;
     });
 
 });

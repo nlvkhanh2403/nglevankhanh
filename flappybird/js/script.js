@@ -1,351 +1,219 @@
+(function () {
+    var container = document.getElementById("container");
+    var bird = document.getElementById("bird");
+    var poles = Array.prototype.slice.call(document.querySelectorAll(".pole"));
+    var topPole = document.getElementById("pole_1");
+    var bottomPole = document.getElementById("pole_2");
+    var scoreLabel = document.getElementById("score");
+    var levelLabel = document.getElementById("level");
+    var levelUpNotice = document.getElementById("level-up-notice");
+    var bestScoreLabel = document.getElementById("best_score");
+    var playButton = document.getElementById("play_btn");
+    var resultScreen = document.getElementById("result_screen");
 
-$(function () {
+    if (!container || !bird || poles.length !== 2) return;
 
-    // ==============================
-    // 1. KHAI BÁO CÁC OBJECT
-    // ==============================
+    var containerRect = container.getBoundingClientRect();
+    var birdRect = bird.getBoundingClientRect();
+    var containerWidth = container.clientWidth;
+    var containerHeight = container.clientHeight;
+    var birdStartTop = birdRect.top - containerRect.top;
+    var birdStartLeft = birdRect.left - containerRect.left;
+    var pipeStartRight = parseFloat(window.getComputedStyle(topPole).right) || -64;
+    var pipeRight = pipeStartRight;
+    var topPipeStartHeight = parseFloat(window.getComputedStyle(topPole).height);
+    var bottomPipeStartHeight = parseFloat(window.getComputedStyle(bottomPole).height);
 
-    var container = $('#container');
-    var bird = $('#bird');
-    var pole = $('.pole');
-    var pole_1 = $('#pole_1');
-    var pole_2 = $('#pole_2');
-    var score = $('#score');
-    var level = $('#level');
+    var score = 0;
+    var bestScore = 0;
+    var level = 1;
+    var birdTop = birdStartTop;
+    var birdVelocity = 0;
+    var gameStarted = false;
+    var gameOver = false;
+    var isFlapping = false;
+    var pipeScored = false;
+    var lastFrameTime = 0;
+    var animationFrame = null;
+    var levelNoticeTimer = null;
 
-    // ==============================
-    // 2. THÔNG SỐ GAME
-    // ==============================
+    var gravity = 1100;
+    var flapSpeed = -250;
+    var heldFlapSpeed = -180;
+    var speedByLevel = { 1: 250, 2: 330, 3: 410, 4: 490 };
 
-    var current_level = 1;
-    var game_interval = 40;
-    var game_timer = null;
+    try {
+        bestScore = Number(window.localStorage.getItem("flappy-bird-best-score")) || 0;
+    } catch (error) {
+        bestScore = 0;
+    }
+    if (bestScoreLabel) bestScoreLabel.textContent = bestScore;
 
-    var container_width = parseInt(container.width());
-    var container_height = parseInt(container.height());
-    var pole_initial_position = parseInt(pole.css('right'));
-    var pole_initial_height = parseInt(pole_1.css('height'));
-    var bird_left = parseInt(bird.css('left'));
-    var bird_height = parseInt(bird.height());
+    function setPipePosition() {
+        var offsetX = -(pipeRight - pipeStartRight);
+        var transform = "translate3d(" + offsetX + "px, 0, 0)";
+        poles.forEach(function (pole) {
+            pole.style.transform = transform;
+        });
+    }
 
-    // Tốc độ di chuyển của ống
-    var speed = 10;
+    function setBirdPosition() {
+        var offsetY = birdTop - birdStartTop;
+        var tilt = Math.max(-28, Math.min(65, birdVelocity * 0.075));
+        bird.style.transform = "translate3d(0, " + offsetY + "px, 0) rotate(" + tilt + "deg)";
+    }
 
-    // ==============================
-    // 3. TRẠNG THÁI GAME
-    // ==============================
-
-    var go_up = null;
-    var score_updated = false;
-    var game_over = false;
-    var game_started = false;
-
-    // ==============================
-    // 4. CẬP NHẬT LEVEL
-    // ==============================
+    function movePipePair() {
+        var randomHeight = Math.floor(Math.random() * 100);
+        topPole.style.height = (topPipeStartHeight + randomHeight) + "px";
+        bottomPole.style.height = (bottomPipeStartHeight - randomHeight) + "px";
+        pipeRight = pipeStartRight;
+        pipeScored = false;
+        setPipePosition();
+    }
 
     function updateLevel() {
-
-        var current_score = parseInt(score.text());
-
-        var new_level = 1;
-        var new_interval = 40;
-
-        if (current_score >= 40) {
-            new_level = 4;
-            new_interval = 20;
+        var newLevel = score >= 40 ? 4 : score >= 20 ? 3 : score >= 5 ? 2 : 1;
+        if (newLevel === level) return;
+        level = newLevel;
+        levelLabel.textContent = "Level: " + level;
+        if (levelUpNotice) {
+            levelUpNotice.textContent = "LEVEL UP!";
+            levelUpNotice.classList.add("is-visible");
+            window.clearTimeout(levelNoticeTimer);
+            levelNoticeTimer = window.setTimeout(function () {
+                levelUpNotice.classList.remove("is-visible");
+            }, 1400);
         }
-        else if (current_score >= 20) {
-            new_level = 3;
-            new_interval = 25;
+    }
+
+    function hasCollision() {
+        var birdRectNow = bird.getBoundingClientRect();
+        var containerRectNow = container.getBoundingClientRect();
+        if (birdRectNow.top <= containerRectNow.top || birdRectNow.bottom >= containerRectNow.bottom) return true;
+
+        for (var i = 0; i < poles.length; i++) {
+            var poleRect = poles[i].getBoundingClientRect();
+            var overlaps = birdRectNow.right > poleRect.left &&
+                birdRectNow.left < poleRect.right &&
+                birdRectNow.bottom > poleRect.top &&
+                birdRectNow.top < poleRect.bottom;
+            if (overlaps) return true;
         }
-        else if (current_score >= 5) {
-            new_level = 2;
-            new_interval = 30;
-        }
+        return false;
+    }
 
-        // Kiểm tra nếu Level thay đổi
-        if (new_level !== current_level) {
+    function finishGame(won) {
+        if (gameOver) return;
+        gameOver = true;
+        gameStarted = false;
+        isFlapping = false;
+        if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
+        animationFrame = null;
 
-            current_level = new_level;
-            game_interval = new_interval;
-
-            // Hiển thị Level mới
-            level.text('Level: ' + current_level);
-
-            // Thay đổi Interval
-            if (game_timer !== null && !game_over) {
-
-                clearInterval(game_timer);
-
-                game_timer = setInterval(gameLoop, game_interval);
+        document.getElementById("final_score").textContent = score;
+        document.getElementById("final_level").textContent = "Level " + level;
+        document.getElementById("result_title").textContent = won ? "CHÚC MỪNG! BẠN ĐÃ CHIẾN THẮNG!" : "GAME OVER!";
+        if (score > bestScore) {
+            bestScore = score;
+            if (bestScoreLabel) bestScoreLabel.textContent = bestScore;
+            try {
+                window.localStorage.setItem("flappy-bird-best-score", String(bestScore));
+            } catch (error) {
+                // The game remains playable when browser storage is unavailable.
             }
-
-            console.log('Level: ' + current_level);
-            console.log('Interval: ' + game_interval);
         }
+        resultScreen.style.display = "flex";
     }
 
-    // ==============================
-    // 5. BẮT ĐẦU GAME
-    // ==============================
+    function frame(now) {
+        if (!gameStarted || gameOver) return;
 
-    function playGame() {
+        if (!lastFrameTime) lastFrameTime = now;
+        // Cap frame delta to avoid a large jump after the tab was inactive.
+        var delta = Math.min((now - lastFrameTime) / 1000, 0.04);
+        lastFrameTime = now;
 
-        if (game_started || game_over) return;
+        if (isFlapping) {
+            birdVelocity = Math.min(birdVelocity, heldFlapSpeed);
+        } else {
+            birdVelocity += gravity * delta;
+        }
+        birdTop += birdVelocity * delta;
+        setBirdPosition();
 
-        game_started = true;
+        pipeRight += speedByLevel[level] * delta;
+        setPipePosition();
 
-        game_timer = setInterval(gameLoop, game_interval);
-    }
+        var scoreThreshold = containerWidth - birdStartLeft;
+        if (!pipeScored && pipeRight > scoreThreshold) {
+            pipeScored = true;
+            score++;
+            scoreLabel.textContent = score;
+            updateLevel();
+            if (score >= 50) {
+                finishGame(true);
+                return;
+            }
+        }
 
-    // ==============================
-    // 6. VÒNG LẶP GAME
-    // ==============================
+        if (pipeRight > containerWidth) movePipePair();
 
-    function gameLoop() {
-
-        // Kiểm tra va chạm
-        if (
-            collision(bird, pole_1) ||
-            collision(bird, pole_2) ||
-            parseInt(bird.css('top')) <= 0 ||
-            parseInt(bird.css('top')) > container_height - bird_height
-        ) {
-
-            stop_the_game();
+        if (hasCollision()) {
+            finishGame(false);
             return;
         }
 
-        // Lấy vị trí hiện tại của ống
-        var pole_current_position = parseInt(pole.css('right'));
-
-        // Cộng điểm khi chim vượt qua ống
-        if (pole_current_position > container_width - bird_left) {
-
-            if (score_updated === false) {
-
-                var current_score = parseInt(score.text()) + 1;
-
-                score.text(current_score);
-
-                score_updated = true;
-
-                // Kiểm tra chiến thắng
-                if (current_score >= 50) {
-
-                    win_the_game();
-                    return;
-                }
-
-                // Cập nhật Level
-                updateLevel();
-            }
-        }
-
-        // Khi ống đi ra khỏi màn hình
-        if (pole_current_position > container_width) {
-
-            var new_height = parseInt(Math.random() * 100);
-
-            pole_1.css('height', pole_initial_height + new_height);
-            pole_2.css('height', pole_initial_height - new_height);
-
-            score_updated = false;
-
-            pole_current_position = pole_initial_position;
-        }
-
-        // Di chuyển ống
-        pole.css('right', pole_current_position + speed);
-
-        // Chim rơi xuống nếu không bay lên
-        if (go_up === null) {
-
-            go_down();
-        }
+        animationFrame = window.requestAnimationFrame(frame);
     }
 
-    // ==============================
-    // 7. CHIM RƠI XUỐNG
-    // ==============================
-
-    function go_down() {
-
-        bird.css('top', parseInt(bird.css('top')) + 8);
-
-        bird.css('transform', 'rotate(30deg)');
+    function startGame() {
+        if (gameStarted || gameOver) return;
+        gameStarted = true;
+        lastFrameTime = 0;
+        if (playButton) playButton.style.display = "none";
+        animationFrame = window.requestAnimationFrame(frame);
     }
 
-    // ==============================
-    // 8. CHIM BAY LÊN
-    // ==============================
-
-    function up() {
-
-        if (game_over || !game_started) return;
-
-        bird.css('top', parseInt(bird.css('top')) - 12);
-
-        bird.css('transform', 'rotate(-10deg)');
+    function flap() {
+        if (!gameStarted || gameOver) return;
+        isFlapping = true;
+        birdVelocity = flapSpeed;
     }
 
-    // ==============================
-    // 9. DỪNG CHUYỂN ĐỘNG CHIM
-    // ==============================
-
-    function stopBird() {
-
-        clearInterval(go_up);
-
-        go_up = null;
+    function releaseFlap() {
+        isFlapping = false;
     }
 
-    // ==============================
-    // 10. HIỂN THỊ MÀN HÌNH KẾT QUẢ
-    // ==============================
-
-    function showResult(isWin) {
-
-        // Hiển thị điểm số
-        $('#final_score').text(score.text());
-
-        // Hiển thị Level đạt được
-        $('#final_level').text('Level ' + current_level);
-
-        // Thay đổi tiêu đề theo kết quả
-        if (isWin) {
-
-            $('#result_title').text('CHÚC MỪNG! BẠN ĐÃ CHIẾN THẮNG!');
-
-        }
-        else {
-
-            $('#result_title').text('GAME OVER!');
-
-        }
-
-        // Hiển thị màn hình kết quả
-        $('#result_screen').css('display', 'flex');
+    if (playButton) {
+        playButton.addEventListener("click", startGame);
     }
 
-    // ==============================
-    // 11. THUA GAME
-    // ==============================
-
-    function stop_the_game() {
-
-        if (game_over) return;
-
-        clearInterval(game_timer);
-
-        stopBird();
-
-        game_timer = null;
-
-        game_over = true;
-
-        // Hiển thị kết quả khi thua
-        showResult(false);
-    }
-
-    // ==============================
-    // 12. CHIẾN THẮNG
-    // ==============================
-
-    function win_the_game() {
-
-        if (game_over) return;
-
-        clearInterval(game_timer);
-
-        stopBird();
-
-        game_timer = null;
-
-        game_over = true;
-
-        // Hiển thị kết quả khi thắng
-        showResult(true);
-    }
-
-    // ==============================
-    // 13. ĐIỀU KHIỂN CHIM BẰNG ARROWDOWN
-    // ==============================
-
-    $(document).keydown(function (e) {
-
-        if (e.key === 'ArrowDown') {
-
-            e.preventDefault();
-
-            if (game_over || !game_started) return;
-
-            if (go_up === null) {
-
-                go_up = setInterval(up, 40);
-            }
-        }
+    document.addEventListener("keydown", function (event) {
+        if (event.code !== "ArrowDown" && event.code !== "Space") return;
+        event.preventDefault();
+        if (event.repeat) return;
+        flap();
+    });
+    document.addEventListener("keyup", function (event) {
+        if (event.code === "ArrowDown" || event.code === "Space") releaseFlap();
     });
 
-    $(document).keyup(function (e) {
+    container.addEventListener("pointerdown", function (event) {
+        if (event.target === playButton || !gameStarted) return;
+        event.preventDefault();
+        flap();
+    });
+    window.addEventListener("pointerup", releaseFlap);
+    window.addEventListener("pointercancel", releaseFlap);
+    window.addEventListener("blur", releaseFlap);
 
-        if (e.key === 'ArrowDown') {
-
-            stopBird();
-        }
+    var restartButtons = document.querySelectorAll("#restart_btn, #result_restart_btn");
+    restartButtons.forEach(function (button) {
+        button.addEventListener("click", function () { window.location.reload(); });
     });
 
-    // ==============================
-    // 14. NÚT BẮT ĐẦU GAME
-    // ==============================
-
-    $('#play_btn').click(function () {
-
-        playGame();
-
-        $(this).hide();
-    });
-
-    // ==============================
-    // 15. NÚT CHƠI LẠI
-    // ==============================
-
-    $('#restart_btn, #result_restart_btn').click(function () {
-
-        location.reload();
-    });
-
-    // ==============================
-    // 16. KIỂM TRA VA CHẠM
-    // ==============================
-
-    function collision($div1, $div2) {
-
-        var x1 = $div1.offset().left;
-        var y1 = $div1.offset().top;
-        var h1 = $div1.outerHeight(true);
-        var w1 = $div1.outerWidth(true);
-
-        var b1 = y1 + h1;
-        var r1 = x1 + w1;
-
-        var x2 = $div2.offset().left;
-        var y2 = $div2.offset().top;
-        var h2 = $div2.outerHeight(true);
-        var w2 = $div2.outerWidth(true);
-
-        var b2 = y2 + h2;
-        var r2 = x2 + w2;
-
-        if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
-
-            return false;
-        }
-        else {
-
-            return true;
-        }
-    }
-
-});
+    // Keep the initial layout stable before the player starts.
+    setPipePosition();
+    setBirdPosition();
+}());

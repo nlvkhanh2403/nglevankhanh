@@ -489,6 +489,7 @@ img {
 
 .product-item {
     display: flex;
+    align-items: stretch;
     margin-bottom: 25px;
     scroll-margin-top: 100px;
 }
@@ -498,6 +499,7 @@ img {
     flex: 1 1 auto;
     flex-direction: column;
     min-height: 400px;
+    height: 100%;
     width: 100%;
     overflow: hidden;
     background-color: #fff;
@@ -1475,6 +1477,39 @@ img {
     background: linear-gradient(90deg, #ffd54f 0%, #ff8a00 48%, #ed1c24 100%);
     background-size: 180% 100%;
     animation: stock-fire-glow 1.25s ease-in-out infinite alternate;
+}
+
+/* Bootstrap progress bar cho số lượng đã bán trên thẻ sản phẩm. */
+#product-grid .product-stock {
+    margin: 10px 0 13px;
+    margin-top: auto;
+}
+
+#product-grid .product-info .product-bottom {
+    margin-top: 0;
+}
+
+#product-grid .product-stock .progress {
+    height: 20px;
+    border-radius: 11px;
+    background: #f5e5dc;
+    box-shadow: none;
+}
+
+#product-grid .product-stock .progress-bar-success {
+    background: linear-gradient(90deg, #ffb072, #ed6845);
+    animation: none;
+}
+
+#product-grid .product-stock .progress.is-low-stock .progress-bar-warning,
+#product-grid .product-stock .progress.is-out-of-stock .progress-bar-danger {
+    background: linear-gradient(90deg, #ff7b28, #e42620);
+}
+
+#product-grid .product-stock .stock-count-on-bar {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(95, 24, 12, .38);
+    font-size: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {
