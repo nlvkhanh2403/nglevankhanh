@@ -1,0 +1,110 @@
+# MyDay – Personal Planner
+
+**MyDay** là ứng dụng quản lý công việc cá nhân (Personal Planner), giúp người dùng tổ chức, theo dõi và quản lý các nhiệm vụ hằng ngày một cách khoa học, trực quan và hiệu quả.
+
+Dự án được xây dựng nhằm hỗ trợ người dùng lập kế hoạch, quản lý tiến độ và nâng cao khả năng kiểm soát công việc thông qua giao diện thân thiện, dễ sử dụng.
+
+## 1. Giới thiệu dự án
+
+- **Tên dự án:** MyDay – Personal Planner
+- **Loại ứng dụng:** Personal Task Management
+- **Mục tiêu:** Hỗ trợ quản lý công việc và theo dõi tiến độ cá nhân.
+- **Đối tượng sử dụng:** Học sinh, sinh viên và người đi làm.
+
+## 2. Các chức năng chính
+
+### Quản lý công việc (Task Management)
+- Thêm công việc mới.
+- Chỉnh sửa thông tin công việc.
+- Xóa công việc.
+- Đánh dấu hoàn thành công việc.
+- Lưu trữ và truy xuất dữ liệu công việc từ database.
+
+### Tìm kiếm và lọc (Search & Filter)
+- Tìm kiếm công việc theo tên hoặc mô tả.
+- Lọc công việc theo trạng thái.
+- Lọc công việc theo mức độ ưu tiên.
+- Sắp xếp công việc theo ngày thực hiện.
+
+### Theo dõi tiến độ (Task Overview)
+- Hiển thị tổng số công việc.
+- Thống kê số công việc đã hoàn thành.
+- Theo dõi công việc đang thực hiện.
+- Hiển thị công việc chưa bắt đầu.
+
+## 3. Công nghệ sử dụng
+
+| Công nghệ | Vai trò |
+|---|---|
+| HTML5 | Xây dựng cấu trúc giao diện |
+| CSS3 | Thiết kế và định dạng giao diện |
+| JavaScript | Xử lý tương tác phía Frontend |
+| Node.js | Xây dựng môi trường Backend |
+| Express.js | Xây dựng RESTful API |
+| SQLite | Lưu trữ và quản lý dữ liệu |
+| better-sqlite3 | Kết nối và thao tác với SQLite |
+
+## 4. Cấu trúc thư mục
+
+```text
+TODOApp/
+│
+├── backend/
+│   ├── database/
+│   │   └── myday.db
+│   │
+│   ├── routes/
+│   │   └── task.js
+│   │
+│   ├── db.js
+│   ├── server.js
+│   ├── package.json
+│   └── package-lock.json
+│
+├── css/
+│   └── tasks.css
+│
+├── js/
+│   └── tasks.js
+│
+├── tasks.html
+│
+└── README.md
+```
+
+*Lưu ý: Cấu trúc trên là mô hình tham khảo; cần điều chỉnh tên và vị trí các file theo cấu trúc thực tế của dự án.*
+
+## 5. Cài đặt và chạy dự án
+
+### Yêu cầu hệ thống
+- Node.js
+- npm
+- Visual Studio Code
+- Trình duyệt web
+
+### Bước 1: Clone repository
+
+```bash
+git clone <repository-url>
+```
+
+### Bước 2: Cài đặt dependencies
+
+Mở Terminal tại thư mục backend:
+
+```bash
+cd backend
+npm install
+```
+
+### Bước 3: Khởi chạy Backend
+
+```bash
+node server.js
+```
+
+Khi khởi động thành công, Terminal sẽ hiển thị thông báo tương tự:
+
+```text
+MyDay Database connected successfully!
+MyDay server

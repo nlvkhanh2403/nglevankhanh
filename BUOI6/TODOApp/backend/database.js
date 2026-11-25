@@ -1,8 +1,9 @@
-
 const Database = require("better-sqlite3");
+const path = require("path");
 
-// Tạo hoặc kết nối database
-const db = new Database("myday.db");
+// Kết nối database
+const dbPath = path.join(__dirname, "database", "myday.db");
+const db = new Database(dbPath);
 
 // Tạo bảng tasks nếu chưa tồn tại
 db.exec(`
