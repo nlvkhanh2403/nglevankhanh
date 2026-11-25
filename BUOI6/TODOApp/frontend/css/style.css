@@ -1,0 +1,993 @@
+
+/* =====================================
+   1. GENERAL
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #FFF9F5;
+    --white: #FFFFFF;
+
+    --pink: #F6DCE5;
+    --pink-dark: #D98CA8;
+
+    --purple: #E9E1F8;
+    --purple-dark: #9A83C5;
+
+    --green: #E0EFE5;
+    --green-dark: #76A88B;
+
+    --yellow: #FFF0D5;
+    --yellow-dark: #C89A4E;
+
+    --text: #554B52;
+    --text-light: #A39AA0;
+
+    --border: #F0E8E5;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+button, input, select {
+    font-family: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =====================================
+   2. APP LAYOUT
+===================================== */
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================
+   3. SIDEBAR
+===================================== */
+
+.sidebar {
+    width: 245px;
+    min-height: 100vh;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+
+    padding: 32px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    flex-shrink: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 55px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    background: var(--pink);
+    color: var(--pink-dark);
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+}
+
+.logo h2 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo h2 span {
+    color: var(--pink-dark);
+}
+
+.menu-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 14px 16px;
+    border-radius: 12px;
+
+    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.menu-item i {
+    width: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #FCEEF2;
+    color: var(--pink-dark);
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    margin-bottom: 25px;
+}
+
+.quote-card {
+    padding: 19px;
+    border-radius: 16px;
+    background: #F9F0F6;
+}
+
+.quote-icon {
+    font-size: 22px;
+    color: var(--pink-dark);
+}
+
+.quote-card p {
+    font-size: 12px;
+    line-height: 1.7;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.quote-card span:last-child {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--pink-dark);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.avatar {
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    background: var(--purple);
+    color: var(--purple-dark);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 800;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h4 {
+    font-size: 12px;
+}
+
+.profile-info p {
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+.profile > i {
+    color: var(--text-light);
+}
+
+
+/* =====================================
+   4. MAIN CONTENT
+===================================== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 35px 42px;
+}
+
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 38px;
+}
+
+.date-label {
+    color: var(--pink-dark);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.welcome h1 {
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.welcome h1 span {
+    color: var(--pink-dark);
+}
+
+.welcome-text {
+    color: var(--text-light);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notification-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-light);
+    font-size: 16px;
+}
+
+.notification-btn span {
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 7px;
+    height: 7px;
+    background: var(--pink-dark);
+    border-radius: 50%;
+}
+
+.header-date {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 10px 15px;
+}
+
+.date-icon {
+    width: 37px;
+    height: 37px;
+    background: var(--yellow);
+    color: var(--yellow-dark);
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-date p {
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+.header-date h3 {
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+
+/* =====================================
+   5. SECTION HEADING
+===================================== */
+
+.section-heading,
+.card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-heading {
+    margin-bottom: 19px;
+}
+
+.section-heading h2,
+.card-heading h2 {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.section-heading p,
+.card-heading p {
+    color: var(--text-light);
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.view-all,
+.card-heading > a {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--pink-dark);
+}
+
+.view-all i {
+    margin-left: 5px;
+}
+
+
+/* =====================================
+   6. STATISTICS
+===================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    padding: 19px;
+    min-height: 143px;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.total-card {
+    background: var(--pink);
+}
+
+.completed-card {
+    background: var(--green);
+}
+
+.progress-card {
+    background: var(--purple);
+}
+
+.overdue-card {
+    background: var(--yellow);
+}
+
+.stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-icon {
+    width: 34px;
+    height: 34px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+}
+
+.total-card .stat-icon {
+    color: var(--pink-dark);
+}
+
+.completed-card .stat-icon {
+    color: var(--green-dark);
+}
+
+.progress-card .stat-icon {
+    color: var(--purple-dark);
+}
+
+.overdue-card .stat-icon {
+    color: var(--yellow-dark);
+}
+
+.stat-label {
+    font-size: 9px;
+    font-weight: 800;
+    color: #847980;
+}
+
+.stat-card h2 {
+    font-size: 27px;
+    margin-top: 12px;
+    font-weight: 800;
+}
+
+.stat-card > p {
+    font-size: 10px;
+    color: #897F85;
+    margin-top: 2px;
+}
+
+
+/* =====================================
+   7. DASHBOARD GRID
+===================================== */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 22px;
+    min-width: 0;
+}
+
+.card-heading {
+    margin-bottom: 22px;
+}
+
+.card-heading > a {
+    white-space: nowrap;
+}
+
+
+/* =====================================
+   8. TODAY SCHEDULE
+===================================== */
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 68px;
+    border-bottom: 1px solid #F7F1EF;
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.schedule-time {
+    width: 43px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+.schedule-line {
+    width: 4px;
+    height: 39px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.pink-line {
+    background: var(--pink-dark);
+}
+
+.purple-line {
+    background: var(--purple-dark);
+}
+
+.green-line {
+    background: var(--green-dark);
+}
+
+.yellow-line {
+    background: var(--yellow-dark);
+}
+
+.schedule-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.schedule-content h3 {
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.schedule-content p {
+    font-size: 10px;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+.schedule-tag {
+    font-size: 9px;
+    font-weight: 800;
+    padding: 5px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.pink-tag {
+    background: #FCEEF2;
+    color: var(--pink-dark);
+}
+
+.purple-tag {
+    background: #F0EAF9;
+    color: var(--purple-dark);
+}
+
+.green-tag {
+    background: #EAF4ED;
+    color: var(--green-dark);
+}
+
+.yellow-tag {
+    background: #FFF5E4;
+    color: var(--yellow-dark);
+}
+
+
+/* =====================================
+   9. WEEKLY PROGRESS
+===================================== */
+
+.chart-filter {
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 8px;
+    padding: 7px 10px;
+    color: var(--text);
+    font-size: 10px;
+    outline: none;
+}
+
+.chart-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+.chart-summary h2 {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.chart-summary span {
+    color: var(--green-dark);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.chart {
+    display: flex;
+    height: 175px;
+    gap: 10px;
+}
+
+.chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    color: var(--text-light);
+    font-size: 9px;
+}
+
+.chart-content {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.chart-grid-lines {
+    position: absolute;
+    inset: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chart-grid-lines span {
+    border-top: 1px dashed #EEE8ED;
+}
+
+.chart-bars {
+    position: absolute;
+    inset: 0 0 0 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.bar-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+    flex-direction: column;
+    height: 100%;
+    width: 10%;
+}
+
+.bar {
+    width: 9px;
+    border-radius: 5px 5px 2px 2px;
+    z-index: 1;
+}
+
+.completed-bar {
+    background: var(--purple-dark);
+}
+
+.pending-bar {
+    background: var(--pink-dark);
+}
+
+.bar-group span {
+    font-size: 9px;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 12px;
+}
+
+.chart-legend span {
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.completed-dot {
+    background: var(--purple-dark);
+}
+
+.pending-dot {
+    background: var(--pink-dark);
+}
+
+
+/* =====================================
+   10. UPCOMING TASKS
+===================================== */
+
+.upcoming-list {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.upcoming-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.upcoming-icon {
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pink-bg {
+    background: #FCEEF2;
+    color: var(--pink-dark);
+}
+
+.purple-bg {
+    background: #F0EAF9;
+    color: var(--purple-dark);
+}
+
+.green-bg {
+    background: #EAF4ED;
+    color: var(--green-dark);
+}
+
+.upcoming-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.upcoming-info h3 {
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.upcoming-info p {
+    color: var(--text-light);
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+.priority {
+    font-size: 9px;
+    font-weight: 800;
+    padding: 5px 8px;
+    border-radius: 6px;
+}
+
+.priority.high {
+    background: #FCE4E6;
+    color: #D77F8D;
+}
+
+.priority.medium {
+    background: #FFF0D5;
+    color: #C89A4E;
+}
+
+.priority.low {
+    background: #E5F2E8;
+    color: #72A482;
+}
+
+
+/* =====================================
+   11. MINI CALENDAR
+===================================== */
+
+.mini-calendar {
+    width: 100%;
+}
+
+.calendar-weekdays,
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.calendar-weekdays {
+    margin-bottom: 13px;
+}
+
+.calendar-weekdays span {
+    color: var(--text-light);
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.calendar-days {
+    row-gap: 9px;
+}
+
+.calendar-days span {
+    position: relative;
+    width: 27px;
+    height: 27px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+    font-size: 10px;
+}
+
+.muted-day {
+    color: #D5CDD1;
+}
+
+.selected-day {
+    background: var(--purple-dark);
+    color: white;
+    font-weight: 800;
+}
+
+.has-task::after {
+    content: "";
+    position: absolute;
+    bottom: 1px;
+    width: 4px;
+    height: 4px;
+    background: var(--pink-dark);
+    border-radius: 50%;
+}
+
+.calendar-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 18px;
+    padding: 10px;
+
+    background: #F9F2F8;
+    border-radius: 9px;
+
+    color: var(--purple-dark);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* =====================================
+   12. FOOTER
+===================================== */
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--text-light);
+    font-size: 10px;
+}
+
+.footer span {
+    color: var(--pink-dark);
+}
+
+
+/* =====================================
+   13. RESPONSIVE
+===================================== */
+
+@media (max-width: 1200px) {
+
+    .main-content {
+        padding: 30px 25px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 72px;
+        padding: 25px 10px;
+    }
+
+    .logo {
+        justify-content: center;
+    }
+
+    .logo h2,
+    .menu-title,
+    .menu-item span,
+    .sidebar-bottom,
+    .profile-info,
+    .profile > i {
+        display: none;
+    }
+
+    .menu-item {
+        justify-content: center;
+        padding: 14px 5px;
+    }
+
+    .profile {
+        justify-content: center;
+    }
+
+    .main-content {
+        padding: 24px 16px;
+    }
+
+    .top-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .welcome h1 {
+        font-size: 23px;
+    }
+
+    .stats-grid {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 14px;
+    }
+
+    .stat-label {
+        font-size: 8px;
+    }
+
+    .dashboard-card {
+        padding: 16px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-item {
+        gap: 8px;
+    }
+
+    .schedule-tag {
+        display: none;
+    }
+
+}

@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyDay | Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h2>MyDay<span>.</span></h2>
+            </div>
+
+            <div class="menu-section">
+
+                <p class="menu-title">WORKSPACE</p>
+
+                <a href="index.html" class="menu-item active">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="tasks.html" class="menu-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>My Tasks</span>
+                </a>
+
+                <a href="calendar.html" class="menu-item">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <span>Calendar</span>
+                </a>
+
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <div class="quote-card">
+                    <div class="quote-icon">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+
+                    <p>Small steps every day lead to big changes.</p>
+
+                    <span>Keep going!</span>
+                </div>
+
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">K</div>
+
+                <div class="profile-info">
+                    <h4>My Profile</h4>
+                    <p>Personal Account</p>
+                </div>
+
+                <i class="fa-solid fa-ellipsis"></i>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header class="top-header">
+
+                <div class="welcome">
+                    <p class="date-label">MY PERSONAL SPACE</p>
+
+                    <h1>Good morning! <span>♡</span></h1>
+
+                    <p class="welcome-text">
+                        Let's make today productive and beautiful.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <button class="notification-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span></span>
+                    </button>
+
+                    <div class="header-date">
+                        <div class="date-icon">
+                            <i class="fa-regular fa-calendar"></i>
+                        </div>
+
+                        <div>
+                            <p>Today</p>
+                            <h3 id="current-date">Loading...</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- OVERVIEW -->
+            <section class="overview">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Your Overview</h2>
+                        <p>A little progress each day adds up.</p>
+                    </div>
+
+                    <a href="tasks.html" class="view-all">
+                        View all tasks <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card total-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-list-check"></i>
+                            </div>
+
+                            <span class="stat-label">TOTAL TASKS</span>
+                        </div>
+
+                        <h2 id="total-tasks">24</h2>
+
+                        <p>All your planned tasks</p>
+
+                    </div>
+
+
+                    <div class="stat-card completed-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+
+                            <span class="stat-label">COMPLETED</span>
+                        </div>
+
+                        <h2 id="completed-tasks">16</h2>
+
+                        <p>You've done a great job!</p>
+
+                    </div>
+
+
+                    <div class="stat-card progress-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-spinner"></i>
+                            </div>
+
+                            <span class="stat-label">IN PROGRESS</span>
+                        </div>
+
+                        <h2 id="progress-tasks">05</h2>
+
+                        <p>Keep moving forward</p>
+
+                    </div>
+
+
+                    <div class="stat-card overdue-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+
+                            <span class="stat-label">OVERDUE</span>
+                        </div>
+
+                        <h2 id="overdue-tasks">03</h2>
+
+                        <p>Tasks need your attention</p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DASHBOARD CONTENT -->
+            <section class="dashboard-grid">
+
+
+                <!-- TODAY SCHEDULE -->
+                <div class="dashboard-card schedule-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h2>Today's Schedule</h2>
+                            <p>Your daily activities</p>
+                        </div>
+
+                        <a href="tasks.html">See all</a>
+
+                    </div>
+
+
+                    <div class="schedule-list">
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-time">09:00</div>
+
+                            <div class="schedule-line pink-line"></div>
+
+                            <div class="schedule-content">
+                                <h3>Complete Marketing Report</h3>
+                                <p><i class="fa-regular fa-clock"></i> 09:00 - 10:00 AM</p>
+                            </div>
+
+                            <span class="schedule-tag pink-tag">Study</span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-time">10:30</div>
+
+                            <div class="schedule-line purple-line"></div>
+
+                            <div class="schedule-content">
+                                <h3>Practice English Speaking</h3>
+                                <p><i class="fa-regular fa-clock"></i> 10:30 - 11:00 AM</p>
+                            </div>
+
+                            <span class="schedule-tag purple-tag">Personal</span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-time">14:00</div>
+
+                            <div class="schedule-line green-line"></div>
+
+                            <div class="schedule-content">
+                                <h3>Read a Book</h3>
+                                <p><i class="fa-regular fa-clock"></i> 02:00 - 03:00 PM</p>
+                            </div>
+
+                            <span class="schedule-tag green-tag">Personal</span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="schedule-time">16:00</div>
+
+                            <div class="schedule-line yellow-line"></div>
+
+                            <div class="schedule-content">
+                                <h3>Work on TODO App</h3>
+                                <p><i class="fa-regular fa-clock"></i> 04:00 - 05:00 PM</p>
+                            </div>
+
+                            <span class="schedule-tag yellow-tag">Work</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WEEKLY PROGRESS -->
+                <div class="dashboard-card progress-chart-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h2>Weekly Progress</h2>
+                            <p>Your productivity this week</p>
+                        </div>
+
+                        <select class="chart-filter">
+                            <option>This Week</option>
+                            <option>Last Week</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="chart-summary">
+
+                        <h2>78%</h2>
+
+                        <span>
+                            <i class="fa-solid fa-arrow-up"></i>
+                            Great progress!
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart">
+
+                        <div class="chart-y-axis">
+                            <span>100</span>
+                            <span>75</span>
+                            <span>50</span>
+                            <span>25</span>
+                            <span>0</span>
+                        </div>
+
+
+                        <div class="chart-content">
+
+                            <div class="chart-grid-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+
+                            <div class="chart-bars">
+
+                                <div class="bar-group">
+                                    <div class="bar completed-bar" style="height:65%"></div>
+                                    <div class="bar pending-bar" style="height:25%"></div>
+                                    <span>Mon</span>
+                                </div>
+
+                                <div class="bar-group">
+                                    <div class="bar completed-bar" style="height:80%"></div>
+                                    <div class="bar pending-bar" style="height:15%"></div>
+                                    <span>Tue</span>
+                                </div>
+
+                                <div class="bar-group">
+                                    <div class="bar completed-bar" style="height:55%"></div>
+                                    <div class="bar pending-bar" style="height:35%"></div>
+                                    <span>Wed</span>
+                                </div>
+
+                                <div class="bar-group">
+                                    <div class="bar completed-bar" style="height:90%"></div>
+                                    <div class="bar pending-bar" style="height:10%"></div>
+                                    <span>Thu</span>
+                                </div>
+
+                                <div class="bar-group">
+                                    <div class="bar completed-bar" style="height:70%"></div>
+                                    <div class="bar pending-bar" style="height:20%"></div>
+                                    <span>Fri</span>
+                                </div>
+
+                                <div class="bar-group">
+                                    <div class="bar completed-bar" style="height:45%"></div>
+                                    <div class="bar pending-bar" style="height:40%"></div>
+                                    <span>Sat</span>
+                                </div>
+
+                                <div class="bar-group">
+                                    <div class="bar completed-bar" style="height:60%"></div>
+                                    <div class="bar pending-bar" style="height:25%"></div>
+                                    <span>Sun</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-legend">
+                        <span><i class="legend-dot completed-dot"></i> Completed</span>
+                        <span><i class="legend-dot pending-dot"></i> Pending</span>
+                    </div>
+
+                </div>
+
+
+                <!-- UPCOMING TASKS -->
+                <div class="dashboard-card upcoming-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h2>Upcoming Tasks</h2>
+                            <p>Don't forget your plans</p>
+                        </div>
+
+                        <a href="tasks.html">See all</a>
+
+                    </div>
+
+
+                    <div class="upcoming-list">
+
+                        <div class="upcoming-item">
+                            <div class="upcoming-icon pink-bg">
+                                <i class="fa-solid fa-book"></i>
+                            </div>
+
+                            <div class="upcoming-info">
+                                <h3>Finish Research Report</h3>
+                                <p>November 26, 2026</p>
+                            </div>
+
+                            <span class="priority high">High</span>
+                        </div>
+
+
+                        <div class="upcoming-item">
+                            <div class="upcoming-icon purple-bg">
+                                <i class="fa-solid fa-language"></i>
+                            </div>
+
+                            <div class="upcoming-info">
+                                <h3>Chinese Vocabulary</h3>
+                                <p>November 27, 2026</p>
+                            </div>
+
+                            <span class="priority medium">Medium</span>
+                        </div>
+
+
+                        <div class="upcoming-item">
+                            <div class="upcoming-icon green-bg">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+
+                            <div class="upcoming-info">
+                                <h3>Weekly Personal Review</h3>
+                                <p>November 28, 2026</p>
+                            </div>
+
+                            <span class="priority low">Low</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MINI CALENDAR -->
+                <div class="dashboard-card mini-calendar-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h2>November 2026</h2>
+                            <p>Your monthly overview</p>
+                        </div>
+
+                        <a href="calendar.html">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+
+                    </div>
+
+
+                    <div class="mini-calendar">
+
+                        <div class="calendar-weekdays">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+
+
+                        <div class="calendar-days">
+
+                            <span class="muted-day">26</span>
+                            <span class="muted-day">27</span>
+                            <span class="muted-day">28</span>
+                            <span class="muted-day">29</span>
+                            <span class="muted-day">30</span>
+                            <span class="muted-day">31</span>
+                            <span>1</span>
+
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+
+                            <span>9</span>
+                            <span>10</span>
+                            <span>11</span>
+                            <span>12</span>
+                            <span>13</span>
+                            <span>14</span>
+                            <span>15</span>
+
+                            <span>16</span>
+                            <span>17</span>
+                            <span>18</span>
+                            <span>19</span>
+                            <span>20</span>
+                            <span>21</span>
+                            <span>22</span>
+
+                            <span>23</span>
+                            <span>24</span>
+                            <span class="selected-day">25</span>
+                            <span class="has-task">26</span>
+                            <span class="has-task">27</span>
+                            <span>28</span>
+                            <span>29</span>
+
+                            <span>30</span>
+                            <span class="muted-day">1</span>
+                            <span class="muted-day">2</span>
+                            <span class="muted-day">3</span>
+                            <span class="muted-day">4</span>
+                            <span class="muted-day">5</span>
+                            <span class="muted-day">6</span>
+
+                        </div>
+
+                    </div>
+
+                    <a href="calendar.html" class="calendar-link">
+                        View full calendar
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <footer class="footer">
+                Made with <span>♡</span> for a better day.
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

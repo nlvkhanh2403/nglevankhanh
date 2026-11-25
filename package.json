@@ -1,0 +1,30 @@
+{
+  "name": "nglevankhanh",
+  "version": "1.0.0",
+  "description": "| Thông tin | Chi tiết |\r |---|---|\r | Họ và tên | Nguyễn Lê Vân Khánh |\r | MSSV | 31241024087 |\r | Lớp học phần | EE0001 |\r | GitHub Repository | [nglevankhanh](https://github.com/nlvkhanh2403/nglevankhanh) |\r | GitHub Pages | [JavaScript Labs Website](https://nlvkhanh2403.github.io/nglevankhanh/JavaScript-Labs/index.html) |",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlvkhanh2403/tuan3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nlvkhanh2403/tuan3/issues"
+  },
+  "homepage": "https://github.com/nlvkhanh2403/tuan3#readme",
+  "dependencies": {
+    "better-sqlite3": "^13.2.0",
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
